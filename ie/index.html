@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OSM with Leaflet for iframe in IE</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/url-polyfill@1.0.11/url-polyfill.min.js"></script>
+  </head>
+  <body style="padding:0px;margin:0px">
+    <div  id="map" style="width:100vw;height:100vh;margin:0px"></div>
+    <script type='text/javascript'>
+      // Get the parameters
+      var params = (new URL(window.location.href)).searchParams;
+      var lat = parseFloat(params.get("lat") || "51.505");
+      var lon = parseFloat(params.get("lon") || "0");
+      var z = parseInt(params.get("z") || "17");
+      // set OSM as tile provider
+      var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+      var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
+      // create the map
+      var map = L.map('map').setView([lat, lon],z);
+      map.addLayer(osm);
+      var marker = L.marker([lat, lon]).addTo(map);
+    </script>
+  </body>
+</html>

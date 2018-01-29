@@ -11,4 +11,6 @@ Here is an example of use
         width="400" height="210" frameborder="0"></iframe>
 ```
 
-And you can see the result [example.html](https://kpym.github.io/osmiframe/example.html)
+And you can see the result in [example.html](https://kpym.github.io/osmiframe/example.html).
+
+If you need IE support you can use `https://kpym.github.io/osmiframe/ie/` as replacement. This version loads [url-polyfill](https://github.com/lifaon74/url-polyfill).
